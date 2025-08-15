@@ -18,7 +18,7 @@ export default function TileInventoryApp() {
 
     const handleLogin = () => {
       // Check against environment variable password
-      if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD ) {
+      if (password === process.env.NEXT_PUBLIC_ADMIN_PASSWORD) {
         setIsAuthenticated(true)
         setError('')
       } else {
@@ -390,7 +390,7 @@ export default function TileInventoryApp() {
       setLoading(true)
       
       try {
-        const updatePayload: Record<string, any> = {}
+        const updatePayload: Record<string, string | number> = {}
         if (updateData.total_boxes) updatePayload.total_boxes = parseInt(updateData.total_boxes)
         if (updateData.location) updatePayload.location = updateData.location
         if (updateData.picture_url) updatePayload.picture_url = updateData.picture_url
@@ -508,15 +508,20 @@ export default function TileInventoryApp() {
                     <p className="text-xs text-gray-500">Added: {new Date(tile.created_at).toLocaleDateString()}</p>
                   </div>
                   {tile.picture_url && (
-                    <img 
-                      src={tile.picture_url} 
-                      alt={tile.name}
-                      className="w-74 h-44 object-cover rounded-lg ml-4"
-                      onError={(e) => {
-                        const target = e.target as HTMLImageElement;
-                        target.style.display = 'none';
-                      }}
-                    />
+                    <div className="w-74 h-44 bg-gray-200 rounded-lg ml-4 flex items-center justify-center overflow-hidden">
+                      <img 
+                        src={tile.picture_url} 
+                        alt={tile.name}
+                        className="w-full h-full object-cover"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.style.display = 'none';
+                          if (target.parentElement) {
+                            target.parentElement.innerHTML = '<div class="text-xs text-gray-500">No Image</div>';
+                          }
+                        }}
+                      />
+                    </div>
                   )}
                 </div>
               </div>
