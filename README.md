@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Tile Inventory Management System
 
-## Getting Started
+A modern, password-protected web application for managing tile inventory with box-based tracking and real-time updates.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- **🔐 Password Protection** - Simple login system to secure your inventory
+- **➕ Add Tiles** - Add new tile types with images, sizes, square footage, and location
+- **➖ Remove Tiles** - Remove tiles by box quantities when sold
+- **✏️ Update Inventory** - Update existing tile details and quantities
+- **👁️ View All Tiles** - Display complete inventory with images and stats
+- **📊 Dashboard Stats** - Real-time overview of total tile types, boxes, and square footage
+- **📱 Responsive Design** - Works on desktop, tablet, and mobile devices
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Tech Stack
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Frontend**: Next.js 14 (React 18, TypeScript)
+- **Styling**: Tailwind CSS
+- **Database**: PostgreSQL (Supabase)
+- **Backend**: Supabase (Authentication, Real-time updates)
+- **Icons**: Lucide React
+- **Hosting**: Vercel (Frontend) + Supabase (Database)
+- **Version Control**: Git + GitHub
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Database Schema
 
-## Learn More
+- **Tiles Table**: ID, Name, Picture URL, Size, Sq Ft per Box, Total Boxes, Location, Timestamps
+- **Box-based Operations**: All inventory changes tracked by box quantities
+- **Real-time Updates**: Automatic UI refresh on data changes
 
-To learn more about Next.js, take a look at the following resources:
+## Architecture
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Client-side React App** with TypeScript for type safety
+- **Supabase PostgreSQL** database with Row Level Security
+- **Real-time subscriptions** for live inventory updates
+- **Environment-based configuration** for secure deployment
+- **Responsive grid layouts** optimized for inventory management
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Built for efficient tile inventory management with modern web technologies.
